@@ -1,9 +1,0 @@
-{ "admin":  ["admin", true, ["all"]],
-  "a":      ["a", false, ["win10","centos8","fedora33xfce"]],
-  "x":      ["x", true, ["ubuntu20.04","centos8","fedora33xfce"]],
-  "z":      ["a",false, ["win10"]],
-  "abc":    ["bbb",false, ["ubuntu20.04","centos8"]],
-  "xxx":    ["xxx",false, ["ubuntu20.04","win10"]],
-  "user":   ["bbb",false, ["centos8","ubuntu20.04"]],
-  "ala":    ["bbb",false, ["ubuntu20.04","ubuntu20.04_02"]]
-  }

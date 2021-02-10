@@ -1,105 +1,218 @@
-
-04/02/2021 --- 13:05:00 FROM: ('192.168.0.64', 34050) --- USER: x --- ACTION: login
-04/02/2021 --- 13:06:39 FROM: 192.168.0.64 --- USER: admin --- ACTION: login
-04/02/2021 - 13:08:07 ----- FROM: 192.168.0.64 ----- USER: x ----- ACTION: login
-04/02/2021 - 13:12:54 ----- FROM: 192.168.0.64 ----- USER: x ----- ACTION: login
-04/02/2021 - 13:16:30 ----- FROM: 192.168.0.64 ----- USER: x ----- ACTION: login
-04/02/2021 - 13:17:30 ----- FROM: 192.168.0.64 ----- USER: x ----- ACTION: login
-04/02/2021 - 13:20:00 ----- FROM: 192.168.0.64 ----- USER: x ----- ACTION: login
-04/02/2021 - 13:23:50 ----- FROM: 192.168.0.64 ----- USER: x ----- ACTION: login
-04/02/2021 - 13:28:01 ----- FROM: 192.168.0.64 ----- USER: x ----- ACTION: login
-04/02/2021 - 13:29:30 ----- FROM: 192.168.0.64 ----- USER: x ----- ACTION: login
-04/02/2021 - 13:30:23 ----- FROM: 192.168.0.64 ----- USER: x ----- ACTION: login
-04/02/2021 - 13:37:55 ----- FROM: 192.168.0.64 ----- USER: x ----- ACTION: login
-04/02/2021 - 13:44:50 ----- FROM: 192.168.0.64 ----- USER: x ----- ACTION: login
-04/02/2021 - 13:45:23 ----- FROM: 192.168.0.64 ----- USER: x ----- ACTION: login
-04/02/2021 - 13:46:27 ----- FROM: 192.168.0.64 ----- USER: x ----- ACTION: login
-04/02/2021 - 13:46:58 ----- FROM: 192.168.0.64 ----- USER: a ----- ACTION: login
-04/02/2021 - 13:47:35 ----- FROM: 192.168.0.64 ----- USER: x ----- ACTION: login
-04/02/2021 - 13:48:00 ----- FROM: 192.168.0.64 ----- USER: a ----- ACTION: login
-04/02/2021 - 13:51:59 ----- FROM: 192.168.0.64 ----- USER: x ----- ACTION: login
-04/02/2021 - 13:53:52 ----- FROM: 192.168.0.64 ----- USER: x ----- ACTION: login
-04/02/2021 - 13:58:31 ----- FROM: 192.168.0.64 ----- USER: x ----- ACTION: login
-04/02/2021 - 14:00:35 ----- FROM: 192.168.0.64 ----- USER: x ----- ACTION: login
-04/02/2021 - 14:00:43 ----- FROM: 192.168.0.64 ----- USER: x ----- ACTION: login
-04/02/2021 - 14:02:36 ----- FROM: 192.168.0.64 ----- USER: x ----- ACTION: login
-04/02/2021 - 14:05:32 ----- FROM: 192.168.0.64 ----- USER: x ----- ACTION: login
-04/02/2021 - 14:06:51 ----- FROM: 192.168.0.64 ----- USER: x ----- ACTION: login
-04/02/2021 - 14:09:27 ----- FROM: 192.168.0.64 ----- USER: x ----- ACTION: login
-04/02/2021 - 14:11:47 ----- FROM: 192.168.0.64 ----- USER: x ----- ACTION: login
-04/02/2021 - 14:32:34 ----- FROM: 192.168.0.64 ----- USER: a ----- ACTION: login
-04/02/2021 - 14:33:04 ----- FROM: 192.168.0.64 ----- USER: x ----- ACTION: login
-04/02/2021 - 14:35:15 ----- FROM: 192.168.0.64 ----- USER: x ----- ACTION: login
-04/02/2021 - 15:15:05 ----- FROM: 192.168.0.64 ----- USER: x ----- ACTION: login
-04/02/2021 - 15:19:48 ----- FROM: 192.168.0.64 ----- USER: x ----- ACTION: login
-04/02/2021 - 15:23:35 ----- FROM: 192.168.0.64 ----- USER: x ----- ACTION: login
-04/02/2021 - 15:28:45 ----- FROM: 192.168.0.64 ----- USER: x ----- ACTION: login
-04/02/2021 - 15:29:14 ----- FROM: 192.168.0.64 ----- USER: x ----- ACTION: login
-04/02/2021 - 15:50:29 ----- FROM: 192.168.0.64 ----- USER: x ----- ACTION: login
-04/02/2021 - 15:51:34 ----- FROM: 192.168.0.64 ----- USER: x ----- ACTION: login
-04/02/2021 - 15:52:37 ----- FROM: 192.168.0.64 ----- USER: x ----- ACTION: login
-04/02/2021 - 15:56:45 ----- FROM: 192.168.0.64 ----- USER: x ----- ACTION: login
-04/02/2021 - 16:09:04 ----- FROM: 192.168.0.64 ----- USER: x ----- ACTION: login
-04/02/2021 - 16:10:36 ----- FROM: 192.168.0.64 ----- USER: x ----- ACTION: login
-04/02/2021 - 16:15:25 ----- FROM: 192.168.0.64 ----- USER: x ----- ACTION: login
-04/02/2021 - 16:16:58 ----- FROM: 192.168.0.64 ----- USER: x ----- ACTION: login
-04/02/2021 - 16:18:27 ----- FROM: 192.168.0.64 ----- USER: x ----- ACTION: login
-04/02/2021 - 16:40:49 ----- FROM: 192.168.0.64 ----- USER: x ----- ACTION: login
-04/02/2021 - 16:51:59 ----- FROM: 192.168.0.64 ----- USER: x ----- ACTION: login
-04/02/2021 - 16:52:41 ----- FROM: 192.168.0.64 ----- USER: x ----- ACTION: login
-04/02/2021 - 16:53:28 ----- FROM: 192.168.0.64 ----- USER: x ----- ACTION: login
-04/02/2021 - 16:54:16 ----- FROM: 192.168.0.64 ----- USER: x ----- ACTION: login
-04/02/2021 - 16:55:43 ----- FROM: 192.168.0.64 ----- USER: x ----- ACTION: login
-04/02/2021 - 16:58:37 ----- FROM: 192.168.0.64 ----- USER: x ----- ACTION: login
-04/02/2021 - 17:13:21 ----- FROM: 192.168.0.64 ----- USER: x ----- ACTION: login
-04/02/2021 - 17:14:33 ----- FROM: 192.168.0.64 ----- USER: x ----- ACTION: login
-04/02/2021 - 17:15:28 ----- FROM: 192.168.0.64 ----- USER: x ----- ACTION: login
-04/02/2021 - 17:16:10 ----- FROM: 192.168.0.64 ----- USER: x ----- ACTION: login
-04/02/2021 - 17:26:39 ----- FROM: 192.168.0.64 ----- USER: x ----- ACTION: login
-04/02/2021 - 17:41:47 ----- FROM: 192.168.0.64 ----- USER: x ----- ACTION: login
-04/02/2021 - 17:42:42 ----- FROM: 192.168.0.64 ----- USER: x ----- ACTION: login
-04/02/2021 - 17:53:14 ----- FROM: 192.168.0.64 ----- USER: x ----- ACTION: login
-04/02/2021 - 17:55:17 ----- FROM: 192.168.0.64 ----- USER: x ----- ACTION: login
-04/02/2021 - 17:56:27 ----- FROM: 192.168.0.64 ----- USER: x ----- ACTION: login
-04/02/2021 - 18:14:47 ----- FROM: 192.168.0.64 ----- USER: x ----- ACTION: login
-04/02/2021 - 18:19:36 ----- FROM: 192.168.0.64 ----- USER: x ----- ACTION: login
-04/02/2021 - 18:48:00 ----- FROM: 192.168.0.64 ----- USER: x ----- ACTION: login
-04/02/2021 - 19:03:48 ----- FROM: 192.168.0.64 ----- USER: x ----- ACTION: login
-04/02/2021 - 19:05:18 ----- FROM: 192.168.0.64 ----- USER: x ----- ACTION: login
-04/02/2021 - 19:06:44 ----- FROM: 192.168.0.64 ----- USER: x ----- ACTION: login
-04/02/2021 - 19:34:18 ----- FROM: 192.168.0.64 ----- USER: x ----- ACTION: login
-04/02/2021 - 19:35:39 ----- FROM: 192.168.0.64 ----- USER: x ----- ACTION: login
-04/02/2021 - 19:37:40 ----- FROM: 192.168.0.64 ----- USER: x ----- ACTION: login
-04/02/2021 - 19:38:30 ----- FROM: 192.168.0.64 ----- USER: x ----- ACTION: login
-04/02/2021 - 19:39:09 ----- FROM: 192.168.0.64 ----- USER: x ----- ACTION: login
-04/02/2021 - 19:41:00 ----- FROM: 192.168.0.64 ----- USER: x ----- ACTION: login
-04/02/2021 - 19:47:26 ----- FROM: 192.168.0.64 ----- USER: x ----- ACTION: login
-04/02/2021 - 19:49:31 ----- FROM: 192.168.0.64 ----- USER: x ----- ACTION: login
-04/02/2021 - 19:50:20 ----- FROM: 192.168.0.64 ----- USER: a ----- ACTION: login
-04/02/2021 - 20:09:53 ----- FROM: 192.168.0.64 ----- USER: x ----- ACTION: login
-04/02/2021 - 20:12:21 ----- FROM: 192.168.0.64 ----- USER: x ----- ACTION: login
-04/02/2021 - 20:21:03 ----- FROM: 192.168.0.64 ----- USER: x ----- ACTION: login
-04/02/2021 - 20:22:51 ----- FROM: 192.168.0.64 ----- USER: x ----- ACTION: login
-04/02/2021 - 20:31:34 ----- FROM: 192.168.0.64 ----- USER: x ----- ACTION: login
-04/02/2021 - 20:34:26 ----- FROM: 192.168.0.64 ----- USER: a ----- ACTION: login
-04/02/2021 - 20:37:02 ----- FROM: 192.168.0.64 ----- USER: x ----- ACTION: login
-04/02/2021 - 20:44:47 ----- FROM: 192.168.0.64 ----- USER: a ----- ACTION: login
-04/02/2021 - 20:46:07 ----- FROM: 192.168.0.64 ----- USER: admin ----- ACTION: login
-04/02/2021 - 20:50:37 ----- FROM: 192.168.0.64 ----- USER: x ----- ACTION: login
-04/02/2021 - 20:51:34 ----- FROM: 192.168.0.64 ----- USER: x ----- ACTION: login
-04/02/2021 - 20:53:34 ----- FROM: 192.168.0.64 ----- USER: x ----- ACTION: login
-04/02/2021 - 20:54:51 ----- FROM: 192.168.0.64 ----- USER: x ----- ACTION: login
-04/02/2021 - 20:55:47 ----- FROM: 192.168.0.64 ----- USER: x ----- ACTION: login
-04/02/2021 - 20:56:34 ----- FROM: 192.168.0.64 ----- USER: x ----- ACTION: login
-04/02/2021 - 20:57:31 ----- FROM: 192.168.0.64 ----- USER: x ----- ACTION: login
-04/02/2021 - 20:58:15 ----- FROM: 192.168.0.64 ----- USER: x ----- ACTION: login
-04/02/2021 - 20:59:38 ----- FROM: 192.168.0.64 ----- USER: x ----- ACTION: login
-04/02/2021 - 21:04:07 ----- FROM: 192.168.0.64 ----- USER: a ----- ACTION: login
-04/02/2021 - 21:05:19 ----- FROM: 192.168.0.64 ----- USER: x ----- ACTION: login
-04/02/2021 - 21:07:26 ----- FROM: 192.168.0.64 ----- USER: x ----- ACTION: login
-04/02/2021 - 21:12:57 ----- FROM: 192.168.0.64 ----- USER: x ----- ACTION: login
-04/02/2021 - 21:13:32 ----- FROM: 192.168.0.64 ----- USER: x ----- ACTION: login
-04/02/2021 - 21:35:36 ----- FROM: 192.168.0.64 ----- USER: x ----- ACTION: login
-05/02/2021 - 07:41:18 ----- FROM: 192.168.0.64 ----- USER: x ----- ACTION: login
-05/02/2021 - 07:45:52 ----- FROM: 192.168.0.64 ----- USER: x ----- ACTION: login
-05/02/2021 - 07:50:29 ----- FROM: 192.168.0.64 ----- USER: x ----- ACTION: login
+10/02/2021 - 14:29:26 --- CLEAR LOGS BY USER: x
+10/02/2021 - 14:35:20 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 14:35:20 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 14:36:08 ----- USER: zx ----- ACTION: login to sever
+10/02/2021 - 14:36:08 ----- USER: zx ----- ACTION: login to sever
+10/02/2021 - 14:36:18 ----- USER: zx ----- ACTION: set maxmemory ubuntu20.04: 3072 MB
+10/02/2021 - 14:36:22 ----- USER: zx ----- ACTION: set maxmemory ubuntu20.04_2: 3072 MB
+10/02/2021 - 14:36:26 ----- USER: zx ----- ACTION: start ubuntu20.04
+10/02/2021 - 14:36:28 ----- USER: zx ----- ACTION: start ubuntu20.04_2
+10/02/2021 - 14:36:36 ----- USER: zx ----- ACTION: set memory ubuntu20.04: 1536 MB
+10/02/2021 - 14:36:41 ----- USER: zx ----- ACTION: set memory ubuntu20.04_2: 1536 MB
+10/02/2021 - 14:36:43 ----- USER: zx ----- ACTION: reboot ubuntu20.04_2
+10/02/2021 - 14:36:45 ----- USER: zx ----- ACTION: reboot ubuntu20.04
+10/02/2021 - 14:36:53 ----- USER: zx ----- ACTION: stop ubuntu20.04
+10/02/2021 - 14:36:55 ----- USER: zx ----- ACTION: force stop ubuntu20.04_2
+10/02/2021 - 14:37:28 ----- USER: zx ----- ACTION: stop ubuntu20.04
+10/02/2021 - 14:37:53 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 14:37:53 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 16:25:03 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 16:25:03 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 17:20:34 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 17:20:34 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 17:21:53 ----- USER: abc ----- ACTION: login to sever
+10/02/2021 - 17:21:53 ----- USER: abc ----- ACTION: login to sever
+10/02/2021 - 17:22:13 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 17:22:13 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 17:26:03 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 17:26:03 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 17:27:43 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 17:27:43 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 17:29:02 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 17:29:02 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 17:29:51 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 17:29:51 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 17:30:18 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 17:30:18 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 17:31:40 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 17:31:40 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 17:34:34 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 17:34:34 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 17:55:50 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 17:55:50 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 17:59:08 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 17:59:08 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 18:09:00 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 18:09:00 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 18:11:57 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 18:11:57 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 18:16:25 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 18:16:25 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 18:17:29 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 18:17:29 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 18:18:05 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 18:18:05 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 18:18:42 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 18:18:42 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 18:19:25 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 18:19:25 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 18:21:36 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 18:21:36 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 18:22:33 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 18:22:33 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 18:23:17 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 18:23:17 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 18:26:08 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 18:26:08 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 18:29:21 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 18:29:21 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 18:29:40 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 18:29:40 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 18:30:07 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 18:30:07 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 18:31:05 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 18:31:05 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 18:31:38 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 18:31:38 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 18:32:29 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 18:32:29 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 18:32:58 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 18:32:58 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 18:35:36 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 18:35:36 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 18:36:05 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 18:36:05 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 18:48:04 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 18:48:04 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 18:54:01 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 18:54:01 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 18:59:55 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 18:59:55 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 19:01:20 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 19:01:20 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 19:06:34 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 19:06:34 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 19:11:41 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 19:11:41 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 19:12:24 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 19:12:24 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 19:13:30 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 19:13:30 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 19:16:03 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 19:16:03 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 19:17:12 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 19:17:12 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 19:17:41 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 19:17:41 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 19:19:44 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 19:19:44 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 19:20:09 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 19:20:09 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 19:23:19 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 19:23:19 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 19:25:42 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 19:25:42 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 19:26:45 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 19:26:45 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 19:28:55 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 19:28:55 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 19:30:54 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 19:30:54 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 19:32:36 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 19:32:36 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 19:33:18 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 19:33:18 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 19:35:36 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 19:35:36 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 19:36:08 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 19:36:08 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 19:37:21 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 19:37:21 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 19:37:45 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 19:37:45 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 19:37:52 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 19:37:52 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 19:38:35 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 19:38:35 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 19:40:35 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 19:40:35 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 20:01:55 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 20:01:55 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 20:02:46 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 20:02:46 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 20:05:49 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 20:05:49 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 20:07:10 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 20:07:10 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 20:07:40 ----- USER: x ----- ACTION: start ubuntu20.04
+10/02/2021 - 20:07:42 ----- USER: x ----- ACTION: start ubuntu20.04_2
+10/02/2021 - 20:10:23 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 20:10:23 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 20:12:44 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 20:12:44 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 20:14:27 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 20:14:27 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 20:15:34 ----- USER: x ----- ACTION: start ubuntu20.04
+10/02/2021 - 20:19:52 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 20:19:52 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 20:19:56 ----- USER: x ----- ACTION: start ubuntu20.04
+10/02/2021 - 20:26:14 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 20:26:14 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 20:26:19 ----- USER: x ----- ACTION: start centos8
+10/02/2021 - 20:26:59 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 20:26:59 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 20:27:22 ----- USER: admin ----- ACTION: login to sever
+10/02/2021 - 20:27:22 ----- USER: admin ----- ACTION: login to sever
+10/02/2021 - 20:28:50 ----- USER: admin ----- ACTION: start win10
+10/02/2021 - 20:28:53 ----- USER: admin ----- ACTION: start xubuntu20_04_02
+10/02/2021 - 20:29:05 ----- USER: admin ----- ACTION: start fedora33server
+10/02/2021 - 20:29:08 ----- USER: admin ----- ACTION: start fedora33server_2
+10/02/2021 - 20:29:11 ----- USER: admin ----- ACTION: start fedora33xfce
+10/02/2021 - 20:29:13 ----- USER: admin ----- ACTION: start fedora33xfce_2
+10/02/2021 - 20:29:17 ----- USER: admin ----- ACTION: start xubuntu20_04
+10/02/2021 - 20:29:42 ----- USER: admin ----- ACTION: set memory ubuntu20.04: 1024 MB
+10/02/2021 - 20:29:44 ----- USER: admin ----- ACTION: reboot ubuntu20.04
+10/02/2021 - 20:29:49 ----- USER: admin ----- ACTION: set memory ubuntu20.04_2: 1024 MB
+10/02/2021 - 20:29:51 ----- USER: admin ----- ACTION: reboot ubuntu20.04_2
+10/02/2021 - 20:29:56 ----- USER: admin ----- ACTION: set memory centos8: 1536 MB
+10/02/2021 - 20:29:59 ----- USER: admin ----- ACTION: reboot centos8
+10/02/2021 - 20:30:06 ----- USER: admin ----- ACTION: set memory xubuntu20_04_02: 1024 MB
+10/02/2021 - 20:30:10 ----- USER: admin ----- ACTION: set memory xubuntu20_04_02: 512 MB
+10/02/2021 - 20:30:12 ----- USER: admin ----- ACTION: reboot xubuntu20_04_02
+10/02/2021 - 20:30:21 ----- USER: admin ----- ACTION: set memory fedora33server: 1024 MB
+10/02/2021 - 20:30:29 ----- USER: admin ----- ACTION: reboot fedora33server
+10/02/2021 - 20:30:34 ----- USER: admin ----- ACTION: set memory fedora33server_2: 1024 MB
+10/02/2021 - 20:30:36 ----- USER: admin ----- ACTION: reboot fedora33server_2
+10/02/2021 - 20:30:39 ----- USER: admin ----- ACTION: set memory fedora33xfce: 512 MB
+10/02/2021 - 20:30:42 ----- USER: admin ----- ACTION: reboot fedora33xfce
+10/02/2021 - 20:30:49 ----- USER: admin ----- ACTION: set memory xubuntu20_04: 1024 MB
+10/02/2021 - 20:30:50 ----- USER: admin ----- ACTION: reboot xubuntu20_04
+10/02/2021 - 20:30:52 ----- USER: admin ----- ACTION: set memory xubuntu20_04: 1024 MB
+10/02/2021 - 20:30:55 ----- USER: admin ----- ACTION: reboot xubuntu20_04
+10/02/2021 - 20:31:22 ----- USER: admin ----- ACTION: set memory ubuntu20.04: 3072 MB
+10/02/2021 - 20:31:28 ----- USER: admin ----- ACTION: reboot ubuntu20.04
+10/02/2021 - 20:31:33 ----- USER: admin ----- ACTION: set memory ubuntu20.04_2: 3072 MB
+10/02/2021 - 20:31:35 ----- USER: admin ----- ACTION: reboot ubuntu20.04_2
+10/02/2021 - 20:31:55 ----- USER: admin ----- ACTION: stop win10
+10/02/2021 - 20:32:27 ----- USER: admin ----- ACTION: set maxmemory win10: 2048 MB
+10/02/2021 - 20:32:43 ----- USER: admin ----- ACTION: start win10
+10/02/2021 - 20:33:40 ----- USER: admin ----- ACTION: stop ubuntu20.04
+10/02/2021 - 20:33:42 ----- USER: admin ----- ACTION: stop ubuntu20.04_2
+10/02/2021 - 20:33:44 ----- USER: admin ----- ACTION: stop centos8
+10/02/2021 - 20:33:46 ----- USER: admin ----- ACTION: stop xubuntu20_04_02
+10/02/2021 - 20:33:48 ----- USER: admin ----- ACTION: stop fedora33server
+10/02/2021 - 20:33:50 ----- USER: admin ----- ACTION: stop win10
+10/02/2021 - 20:33:51 ----- USER: admin ----- ACTION: stop fedora33server_2
+10/02/2021 - 20:33:53 ----- USER: admin ----- ACTION: stop fedora33xfce
+10/02/2021 - 20:33:55 ----- USER: admin ----- ACTION: stop fedora33xfce_2
+10/02/2021 - 20:33:57 ----- USER: admin ----- ACTION: stop xubuntu20_04
+10/02/2021 - 20:34:19 ----- USER: admin ----- ACTION: set maxmemory ubuntu20.04: 1024 MB
+10/02/2021 - 20:34:25 ----- USER: admin ----- ACTION: set maxmemory ubuntu20.04_2: 1024 MB
+10/02/2021 - 20:34:35 ----- USER: admin ----- ACTION: set maxmemory centos8: 2048 MB
+10/02/2021 - 20:34:43 ----- USER: admin ----- ACTION: force stop xubuntu20_04_02
+10/02/2021 - 20:34:44 ----- USER: admin ----- ACTION: force stop xubuntu20_04
+10/02/2021 - 20:37:25 ----- USER: admin ----- ACTION: set maxmemory fedora33server: 5120 MB
+10/02/2021 - 20:38:14 ----- USER: abc ----- ACTION: login to sever
+10/02/2021 - 20:38:14 ----- USER: abc ----- ACTION: login to sever
+10/02/2021 - 21:25:14 ----- USER: x ----- ACTION: login to sever
+10/02/2021 - 21:25:14 ----- USER: x ----- ACTION: login to sever
