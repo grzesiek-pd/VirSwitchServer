@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ff3c5828-2477-49ec-b04f-a043ed25a126" name="Default Changelist" comment="beter logs/clear logs">
+    <list default="true" id="ff3c5828-2477-49ec-b04f-a043ed25a126" name="Default Changelist" comment="host mem stats">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vir_switch_server/jobs.py" beforeDir="false" afterPath="$PROJECT_DIR$/vir_switch_server/jobs.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vir_switch_server/logs.txt" beforeDir="false" afterPath="$PROJECT_DIR$/vir_switch_server/logs.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vir_switch_server/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/vir_switch_server/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vir_switch_server/users.json" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,8 +110,19 @@
       <workItem from="1612246531697" duration="6944000" />
       <workItem from="1612872243268" duration="1163000" />
       <workItem from="1612876711440" duration="21080000" />
-      <workItem from="1612939263889" duration="21660000" />
+      <workItem from="1612939263889" duration="22427000" />
+      <workItem from="1613114024051" duration="2700000" />
+      <workItem from="1613204116810" duration="3870000" />
+      <workItem from="1613225489257" duration="605000" />
     </task>
+    <task id="LOCAL-00001" summary="host mem stats">
+      <created>1612989217595</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1612989217595</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -132,9 +142,10 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="beter logs/clear logs" />
-    <option name="LAST_COMMIT_MESSAGE" value="beter logs/clear logs" />
+    <MESSAGE value="host mem stats" />
+    <option name="LAST_COMMIT_MESSAGE" value="host mem stats" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/VirSwitchServer$main.coverage" NAME="main Coverage Results" MODIFIED="1612980067042" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/VirSwitchServer$main.coverage" NAME="main Coverage Results" MODIFIED="1613225493224" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

@@ -60,7 +60,7 @@ def check_user(username, password):
 
 
 def users_list():
-    query = f"SELECT login, admin, vms FROM users ORDER BY admin DESC ;"
+    query = f"SELECT login, admin, vms FROM users ORDER BY admin DESC, login ASC ;"
     cursor.execute(query)
     u_list = cursor.fetchall()
     c.commit()
@@ -100,8 +100,8 @@ def control_vm(cmd):
         err = str(er)
         print(err)
     out = out_raw.split()
-    print(out_raw)
-    print(out)
+    # print(out_raw)
+    # print(out)
     return out
 
 
