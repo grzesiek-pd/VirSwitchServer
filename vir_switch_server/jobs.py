@@ -4,13 +4,13 @@ from datetime import datetime
 import sqlite3
 import hashlib
 
-c = sqlite3.connect('vir_switch_server/users.db')
+c = sqlite3.connect('users.db')
 cursor = c.cursor()
 
 
 def create_table():
     init_pass = hashlib.md5(b'admin').hexdigest()
-    query = f"CREATE TABLE IF NOT EXISTS users(login TEXT UNIQUE , password TEXT , admin TEXT , vms TEXT );"
+    query = f"CREATE TABLE IF NOT EXISTS users(login TEXT , password TEXT , admin TEXT , vms TEXT );"
     cursor.execute(query)
     query2 = f"SELECT login FROM users WHERE admin = 'yes';"
     cursor.execute(query2)
@@ -60,7 +60,7 @@ def check_user(username, password):
 
 
 def users_list():
-    query = f"SELECT login, admin, vms FROM users ORDER BY admin DESC ;"
+    query = f"SELECT login, admin, vms FROM users ORDER BY admin DESC, login ASC ;"
     cursor.execute(query)
     u_list = cursor.fetchall()
     c.commit()
@@ -68,14 +68,14 @@ def users_list():
 
 
 def read_logs_file():
-    f = open('vir_switch_server/logs.txt', 'r', encoding='utf-8')
+    f = open('logs.txt', 'r', encoding='utf-8')
     logs = f.readlines()
     f.close()
     return logs
 
 
 def add_logs_entry(user, action):
-    f = open('vir_switch_server/logs.txt', 'a+', encoding='utf-8')
+    f = open('logs.txt', 'a+', encoding='utf-8')
     now = datetime.now()
     dt_string = now.strftime("%d/%m/%Y - %H:%M:%S")
     f.write(f'{dt_string} ----- USER: {user} ----- ACTION: {action}\n')
@@ -83,7 +83,7 @@ def add_logs_entry(user, action):
 
 
 def reset_logs(user):
-    f = open('vir_switch_server/logs.txt', 'w', encoding='utf-8')
+    f = open('logs.txt', 'w', encoding='utf-8')
     now = datetime.now()
     dt_string = now.strftime("%d/%m/%Y - %H:%M:%S")
     f.write(f'{dt_string} --- CLEAR LOGS BY USER: {user}\n')
@@ -100,8 +100,8 @@ def control_vm(cmd):
         err = str(er)
         print(err)
     out = out_raw.split()
-    print(out_raw)
-    print(out)
+    # print(out_raw)
+    # print(out)
     return out
 
 
