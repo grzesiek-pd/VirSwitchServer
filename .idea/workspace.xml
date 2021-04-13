@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ff3c5828-2477-49ec-b04f-a043ed25a126" name="Default Changelist" comment="fix form add_user">
-      <change beforePath="$PROJECT_DIR$/.idea/VirSwitchServer.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/VirSwitchServer.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/run.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/vir_switch_server/jobs.py" beforeDir="false" afterPath="$PROJECT_DIR$/vir_switch_server/jobs.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vir_switch_server/logs.txt" beforeDir="false" afterPath="$PROJECT_DIR$/vir_switch_server/logs.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vir_switch_server/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/vir_switch_server/main.py" afterDir="false" />
@@ -35,6 +35,7 @@
     <property name="DatabaseDriversLRU" value="sqlite" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
@@ -43,7 +44,7 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="settings.editor.selected.configurable" value="preferences.editor" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -126,7 +127,17 @@
       <workItem from="1614767511415" duration="720000" />
       <workItem from="1614770377253" duration="876000" />
       <workItem from="1614787332961" duration="101000" />
-      <workItem from="1614787590906" duration="5970000" />
+      <workItem from="1614787590906" duration="6107000" />
+      <workItem from="1615020392087" duration="23000" />
+      <workItem from="1617033487680" duration="3916000" />
+      <workItem from="1617088885914" duration="6037000" />
+      <workItem from="1617114586167" duration="1447000" />
+      <workItem from="1617172382702" duration="13774000" />
+      <workItem from="1617350994212" duration="12594000" />
+      <workItem from="1617446709269" duration="198000" />
+      <workItem from="1617447216324" duration="3941000" />
+      <workItem from="1617715973119" duration="4006000" />
+      <workItem from="1618294156953" duration="690000" />
     </task>
     <task id="LOCAL-00001" summary="host mem stats">
       <created>1612989217595</created>
@@ -142,7 +153,14 @@
       <option name="project" value="LOCAL" />
       <updated>1614887469979</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="fix form add_user">
+      <created>1614887580835</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1614887580835</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -167,6 +185,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="fix form add_user" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/VirSwitchServer$main.coverage" NAME="main Coverage Results" MODIFIED="1614770494617" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/VirSwitchServer$main.coverage" NAME="main Coverage Results" MODIFIED="1618294189095" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

@@ -49,7 +49,7 @@ def check_user(username, password):
             is_admin = check[2]
             vms = check[3]
             msg = ['password_ok', user, 'pass', is_admin, vms]
-            add_logs_entry(user, action=f'login to sever')
+            add_logs_entry(user, action=f'login to server')
             return msg
         else:
             msg = ['password_wrong']
@@ -63,6 +63,7 @@ def users_list():
     query = f"SELECT login, admin, vms FROM users ORDER BY admin DESC, login ASC ;"
     cursor.execute(query)
     u_list = cursor.fetchall()
+    print("user list: ", type(u_list), u_list)
     c.commit()
     return u_list
 
@@ -77,16 +78,16 @@ def read_logs_file():
 def add_logs_entry(user, action):
     f = open('logs.txt', 'a+', encoding='utf-8')
     now = datetime.now()
-    dt_string = now.strftime("%d/%m/%Y - %H:%M:%S")
-    f.write(f'{dt_string} ----- USER: {user} ----- ACTION: {action}\n')
+    dt_string = now.strftime("%d-%m-%Y/%H:%M:%S")
+    f.write(f'{dt_string} user:{user} {action}\n')
     f.close()
 
 
 def reset_logs(user):
     f = open('logs.txt', 'w', encoding='utf-8')
     now = datetime.now()
-    dt_string = now.strftime("%d/%m/%Y - %H:%M:%S")
-    f.write(f'{dt_string} --- CLEAR LOGS BY USER: {user}\n')
+    dt_string = now.strftime("%d-%m-%Y/%H:%M:%S")
+    f.write(f'{dt_string} clear logs by user: {user}\n')
     f.close()
 
 
@@ -143,7 +144,18 @@ def make_vm_list(cmd):
         info.append(max_memory)
         memory = int(int(out_raw[-1].split()[-2]) / 1024)
         info.append(memory)
-        # print(info)
+
+        try:
+            p = subprocess.Popen(f"echo 'gugugu' | sudo -S virsh desc {vm}", stdout=PIPE, stderr=PIPE, stdin=PIPE, shell=True)
+            stdout, stderr = p.communicate()
+
+            descryption = stdout.decode('utf-8')
+            err2 = stderr.decode('utf-8')
+            # info = []
+        except Exception as er:
+            err2 = str(er)
+        print("ok->", descryption)
+        info.append(descryption)
         v_list.append(info)
 
     return v_list
