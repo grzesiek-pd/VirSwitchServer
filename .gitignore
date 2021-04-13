@@ -1,3 +1,5 @@
 /identifier.sqlite
 /users.db
 /logs.txt
+.idea/
+identifier.sqlite
