@@ -146,16 +146,48 @@ def make_vm_list(cmd):
         info.append(memory)
 
         try:
+            # p = subprocess.Popen(f"echo 'gugugu' | sudo -S virsh domifaddr {vm} | grep '\(State\|memory\|CPU\)'", stdout=PIPE, stderr=PIPE, stdin=PIPE, shell=True)
+            p = subprocess.Popen(f"echo 'gugugu' | sudo -S virsh domifaddr {vm}", stdout=PIPE, stderr=PIPE, stdin=PIPE, shell=True)
+            stdout, stderr = p.communicate()
+
+            out_ip = stdout.decode('utf-8')
+            err_ip = stderr.decode('utf-8')
+
+        except Exception as er:
+            err_ip = str(err_ip)
+        out_raw = out_ip.split('\n')
+        print(out_raw)
+        print(err_ip)
+        # vm_ip_line = out_raw[2].split(' ')
+        # print(vm_ip_line)
+        # vm_ip = vm_ip_line[4]
+        # info.append(vm_ip)
+
+        try:
             p = subprocess.Popen(f"echo 'gugugu' | sudo -S virsh desc {vm}", stdout=PIPE, stderr=PIPE, stdin=PIPE, shell=True)
             stdout, stderr = p.communicate()
 
-            descryption = stdout.decode('utf-8')
+            vm_descryption_str = stdout.decode('utf-8')
             err2 = stderr.decode('utf-8')
+
+            if vm_descryption_str.startswith('No'):
+                description_ip = "No description!"
+                description_pwd = "No description!"
+            else:
+                desc_dict = eval(vm_descryption_str)
+                print(type(desc_dict), desc_dict)
+                description_ip = desc_dict["ip"]
+                description_pwd = desc_dict["root_pwd"]
+                print("ip:", desc_dict["ip"])
+                print("pass:", desc_dict["root_pwd"])
+
+
             # info = []
         except Exception as er:
             err2 = str(er)
-        print("ok->", descryption)
-        info.append(descryption)
+        print("ok->", description_ip, description_pwd)
+        info.append(description_ip)
+        info.append(description_pwd)
         v_list.append(info)
 
     return v_list
