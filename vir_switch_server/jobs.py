@@ -103,6 +103,7 @@ def control_vm(cmd):
     out = out_raw.split()
     # print(out_raw)
     # print(out)
+
     return out
 
 

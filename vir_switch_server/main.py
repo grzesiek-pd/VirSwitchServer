@@ -1,7 +1,6 @@
 import pickle
 import socket as sock
 import jobs
-from time import sleep
 from cryptography.fernet import Fernet
 
 key = b'8tnFL71voDHkQ3V7XySswRC2ZHOIfB7lDt11n4OieQQ='
