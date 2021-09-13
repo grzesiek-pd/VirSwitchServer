@@ -168,14 +168,14 @@ def make_vm_list(cmd):
             p = subprocess.Popen(f"echo 'gugugu' | sudo -S virsh desc {vm}", stdout=PIPE, stderr=PIPE, stdin=PIPE, shell=True)
             stdout, stderr = p.communicate()
 
-            vm_descryption_str = stdout.decode('utf-8')
+            vm_description_str = stdout.decode('utf-8')
             err2 = stderr.decode('utf-8')
 
-            if vm_descryption_str.startswith('No'):
+            if vm_description_str.startswith('No'):
                 description_ip = "No description!"
                 description_pwd = "No description!"
             else:
-                desc_dict = eval(vm_descryption_str)
+                desc_dict = eval(vm_description_str)
                 print(type(desc_dict), desc_dict)
                 description_ip = desc_dict["ip"]
                 description_pwd = desc_dict["root_pwd"]
@@ -193,3 +193,35 @@ def make_vm_list(cmd):
 
     return v_list
 
+
+def make_vm_details(vm):
+    out = ''
+    err = ''
+    vm_details = {
+        "ip": "",
+        "pass": ""
+    }
+    try:
+        p = subprocess.Popen(f"echo 'gugugu' | sudo -S virsh desc {vm}", stdout=PIPE, stderr=PIPE, stdin=PIPE, shell=True)
+        stdout, stderr = p.communicate()
+
+        vm_description_str = stdout.decode('utf-8')
+        err = stderr.decode('utf-8')
+
+        if vm_description_str.startswith('No'):
+            vm_details["ip"] = "No description!"
+            vm_details["pass"] = "No description!"
+        else:
+            desc_dict = eval(vm_description_str)
+            print(type(desc_dict), desc_dict)
+            vm_details["ip"] = desc_dict["ip"]
+            vm_details["pass"] = desc_dict["root_pwd"]
+            print("ip:", desc_dict["ip"])
+            print("pass:", desc_dict["root_pwd"])
+
+    except Exception as er:
+        err = str(er)
+
+    print(vm_details)
+
+    return vm_details

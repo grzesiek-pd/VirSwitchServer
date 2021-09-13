@@ -1,4 +1,3 @@
-import pickle
 import socket as sock
 import jobs
 from vir_switch_server.encrypt import Crypt
@@ -23,8 +22,8 @@ while True:
         try:
             data_pack = Crypt.decrypt(data_from)
             print(f'-------------------')
-            print(f'otrzymana paczka -> {type(data_from)}{data_from}')
-            print(f'rozkodowana paczka -> {type(data_pack)}{data_pack}')
+            print(f'otrzymana paczka -> {type(data_from)}--dł({len(data_from)})--{data_from}')
+            print(f'rozkodowana paczka -> {type(data_pack)}--dł({len(data_pack)})--{data_pack}')
 
             if len(data_pack) == 4:
                 msg_id = data_pack[0]
@@ -77,6 +76,10 @@ while True:
         elif msg_id == "reset_logs":
             logs = jobs.reset_logs(a_user)
             msg_to_send = logs
+
+        elif msg_id == "get_vm_details":
+            vm_details = jobs.make_vm_details(data2)
+            msg_to_send = vm_details
 
         elif msg_id == "new_memory":
             # print(data2, data3)
@@ -131,8 +134,8 @@ while True:
         pack_to_send = Crypt.encrypt(msg_to_send)
         client_socket.send(pack_to_send)
         print(f'-------------------')
-        print(f'przygotowana paczka -> {type(msg_to_send)}{msg_to_send}')
-        print(f'zakodowana paczka -> {type(pack_to_send)}{len(pack_to_send)}{pack_to_send}')
+        print(f'przygotowana paczka -> {type(msg_to_send)}--dł({len(msg_to_send)})--{msg_to_send}')
+        print(f'zakodowana paczka -> {type(pack_to_send)}--dł({len(pack_to_send)})--{pack_to_send}')
 
     else:
         print("<<< otrzymano pusty pakiet >>>")
