@@ -22,8 +22,8 @@ while True:
         try:
             data_pack = Crypt.decrypt(data_from)
             print(f'-------------------')
-            print(f'otrzymana paczka -> {type(data_from)}--dł({len(data_from)})--{data_from}')
-            print(f'rozkodowana paczka -> {type(data_pack)}--dł({len(data_pack)})--{data_pack}')
+            print(f'otrzymana paczka -> {type(data_from)}--{data_from}')
+            print(f'rozkodowana paczka -> {type(data_pack)}--{data_pack}')
 
             if len(data_pack) == 4:
                 msg_id = data_pack[0]
@@ -81,6 +81,11 @@ while True:
             vm_details = jobs.make_vm_details(data2)
             msg_to_send = vm_details
 
+        elif msg_id == "update_description":
+            vm_details = jobs.update_description(data2, data3)
+            v_list = jobs.make_vm_list('echo "gugugu" | sudo -S virsh list --all ')
+            msg_to_send = v_list
+
         elif msg_id == "new_memory":
             # print(data2, data3)
             jobs.control_vm(f'echo "gugugu" | sudo -S virsh setmem {data2} {data3}M')
@@ -132,10 +137,14 @@ while True:
             msg_to_send = ['password_wrong']
 
         pack_to_send = Crypt.encrypt(msg_to_send)
-        client_socket.send(pack_to_send)
+        try:
+            client_socket.send(pack_to_send)
+        except ConnectionError as err:
+            print(err)
+
         print(f'-------------------')
-        print(f'przygotowana paczka -> {type(msg_to_send)}--dł({len(msg_to_send)})--{msg_to_send}')
-        print(f'zakodowana paczka -> {type(pack_to_send)}--dł({len(pack_to_send)})--{pack_to_send}')
+        print(f'przygotowana paczka -> {type(msg_to_send)}--{msg_to_send}')
+        print(f'zakodowana paczka -> {type(pack_to_send)}--{pack_to_send}')
 
     else:
         print("<<< otrzymano pusty pakiet >>>")

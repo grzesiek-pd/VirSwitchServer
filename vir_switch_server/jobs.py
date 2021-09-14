@@ -147,7 +147,6 @@ def make_vm_list(cmd):
         info.append(memory)
 
         try:
-            # p = subprocess.Popen(f"echo 'gugugu' | sudo -S virsh domifaddr {vm} | grep '\(State\|memory\|CPU\)'", stdout=PIPE, stderr=PIPE, stdin=PIPE, shell=True)
             p = subprocess.Popen(f"echo 'gugugu' | sudo -S virsh domifaddr {vm}", stdout=PIPE, stderr=PIPE, stdin=PIPE, shell=True)
             stdout, stderr = p.communicate()
 
@@ -156,6 +155,7 @@ def make_vm_list(cmd):
 
         except Exception as er:
             err_ip = str(err_ip)
+
         out_raw = out_ip.split('\n')
         print(out_raw)
         print(err_ip)
@@ -176,17 +176,18 @@ def make_vm_list(cmd):
                 description_pwd = "No description!"
             else:
                 desc_dict = eval(vm_description_str)
-                print(type(desc_dict), desc_dict)
+                # print(type(desc_dict), desc_dict)
                 description_ip = desc_dict["ip"]
                 description_pwd = desc_dict["root_pwd"]
-                print("ip:", desc_dict["ip"])
-                print("pass:", desc_dict["root_pwd"])
+                # print("ip:", desc_dict["ip"])
+                # print("pass:", desc_dict["root_pwd"])
 
 
             # info = []
         except Exception as er:
             err2 = str(er)
-        print("ok->", description_ip, description_pwd)
+
+        # print("ok->", description_ip, description_pwd)
         info.append(description_ip)
         info.append(description_pwd)
         v_list.append(info)
@@ -194,34 +195,59 @@ def make_vm_list(cmd):
     return v_list
 
 
-def make_vm_details(vm):
-    out = ''
-    err = ''
-    vm_details = {
-        "ip": "",
-        "pass": ""
-    }
+# def make_vm_details(vm):
+#     out = ''
+#     err = ''
+#     vm_details = {
+#         "ip": "",
+#         "pass": ""
+#     }
+#     try:
+#         p = subprocess.Popen(f"echo 'gugugu' | sudo -S virsh desc {vm}", stdout=PIPE, stderr=PIPE, stdin=PIPE, shell=True)
+#         stdout, stderr = p.communicate()
+#
+#         vm_description_str = stdout.decode('utf-8')
+#         err = stderr.decode('utf-8')
+#
+#         if vm_description_str.startswith('No'):
+#             vm_details["ip"] = "No description!"
+#             vm_details["pass"] = "No description!"
+#         else:
+#             desc_dict = eval(vm_description_str)
+#             print(type(desc_dict), desc_dict)
+#             vm_details["ip"] = desc_dict["ip"]
+#             vm_details["pass"] = desc_dict["root_pwd"]
+#             print("ip:", desc_dict["ip"])
+#             print("pass:", desc_dict["root_pwd"])
+#
+#     except Exception as er:
+#         err = str(er)
+#
+#     print(vm_details)
+#
+#     return vm_details
+
+
+def update_description(data2, data3):
+    vm = data2
+    vm_ip = data3.get('ip')
+    vm_pass = data3.get('pass')
+    # out = ''
+    # err = ''
     try:
-        p = subprocess.Popen(f"echo 'gugugu' | sudo -S virsh desc {vm}", stdout=PIPE, stderr=PIPE, stdin=PIPE, shell=True)
+        p = subprocess.Popen(f'echo "gugugu" | sudo -S virsh desc {vm} --new-desc ' +
+                             "'{" + f'"ip": "{vm_ip}", "root_pwd": "{vm_pass}"'+"}'", stdout=PIPE, stderr=PIPE, stdin=PIPE,
+                             shell=True)
         stdout, stderr = p.communicate()
 
         vm_description_str = stdout.decode('utf-8')
         err = stderr.decode('utf-8')
 
-        if vm_description_str.startswith('No'):
-            vm_details["ip"] = "No description!"
-            vm_details["pass"] = "No description!"
-        else:
-            desc_dict = eval(vm_description_str)
-            print(type(desc_dict), desc_dict)
-            vm_details["ip"] = desc_dict["ip"]
-            vm_details["pass"] = desc_dict["root_pwd"]
-            print("ip:", desc_dict["ip"])
-            print("pass:", desc_dict["root_pwd"])
-
     except Exception as er:
         err = str(er)
+        print(vm_description_str)
+        print(err)
+        print(er)
 
-    print(vm_details)
+    return None
 
-    return vm_details
