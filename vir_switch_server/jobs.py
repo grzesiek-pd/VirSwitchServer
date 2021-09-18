@@ -6,6 +6,7 @@ import hashlib
 
 c = sqlite3.connect('users.db')
 cursor = c.cursor()
+PREFIX = 'echo "gugugu" | sudo -S virsh '
 
 
 def create_table():
@@ -34,6 +35,33 @@ def add_user(username, user_data):
 
 def delete_user(username):
     query = f"DELETE FROM users WHERE login ='{username}';"
+    cursor.execute(query)
+    c.commit()
+
+
+def update_user_vm_list(username, vm, action):
+    query = f"SELECT vms FROM users WHERE login = '{username}';"
+    cursor.execute(query)
+    vms_tuple = cursor.fetchone()
+    c.commit()
+    vm_list = []
+    try:
+        vm_list = list(vms_tuple)[0].split(",")
+        print(type(vm_list), vm_list)
+    except TypeError as err:
+        print(err)
+    if action == 'remove':
+        try:
+            vm_list.remove(vm)
+        except ValueError as err:
+            print(err)
+    elif action == 'add':
+        vm_list.append(vm)
+
+    vms_set = set(vm_list)
+    vms = ",".join(vms_set)
+
+    query = f"UPDATE users SET vms = '{vms}' WHERE login = '{username}';"
     cursor.execute(query)
     c.commit()
 
@@ -127,7 +155,7 @@ def make_vm_list(cmd):
 
     for vm in v_list_info:
         try:
-            p = subprocess.Popen(f"echo 'gugugu' | sudo -S virsh dominfo {vm} | grep '\(State\|memory\|CPU\)'", stdout=PIPE, stderr=PIPE, stdin=PIPE, shell=True)
+            p = subprocess.Popen(f'{PREFIX} dominfo {vm} | grep "\(State\|memory\|CPU\)"', stdout=PIPE, stderr=PIPE, stdin=PIPE, shell=True)
             stdout, stderr = p.communicate()
 
             out = stdout.decode('utf-8')
@@ -147,7 +175,7 @@ def make_vm_list(cmd):
         info.append(memory)
 
         try:
-            p = subprocess.Popen(f"echo 'gugugu' | sudo -S virsh domifaddr {vm}", stdout=PIPE, stderr=PIPE, stdin=PIPE, shell=True)
+            p = subprocess.Popen(f'{PREFIX} domifaddr {vm}', stdout=PIPE, stderr=PIPE, stdin=PIPE, shell=True)
             stdout, stderr = p.communicate()
 
             out_ip = stdout.decode('utf-8')
@@ -165,7 +193,7 @@ def make_vm_list(cmd):
         # info.append(vm_ip)
 
         try:
-            p = subprocess.Popen(f"echo 'gugugu' | sudo -S virsh desc {vm}", stdout=PIPE, stderr=PIPE, stdin=PIPE, shell=True)
+            p = subprocess.Popen(f'{PREFIX} desc {vm}', stdout=PIPE, stderr=PIPE, stdin=PIPE, shell=True)
             stdout, stderr = p.communicate()
 
             vm_description_str = stdout.decode('utf-8')
@@ -182,7 +210,6 @@ def make_vm_list(cmd):
                 # print("ip:", desc_dict["ip"])
                 # print("pass:", desc_dict["root_pwd"])
 
-
             # info = []
         except Exception as er:
             err2 = str(er)
@@ -195,39 +222,6 @@ def make_vm_list(cmd):
     return v_list
 
 
-# def make_vm_details(vm):
-#     out = ''
-#     err = ''
-#     vm_details = {
-#         "ip": "",
-#         "pass": ""
-#     }
-#     try:
-#         p = subprocess.Popen(f"echo 'gugugu' | sudo -S virsh desc {vm}", stdout=PIPE, stderr=PIPE, stdin=PIPE, shell=True)
-#         stdout, stderr = p.communicate()
-#
-#         vm_description_str = stdout.decode('utf-8')
-#         err = stderr.decode('utf-8')
-#
-#         if vm_description_str.startswith('No'):
-#             vm_details["ip"] = "No description!"
-#             vm_details["pass"] = "No description!"
-#         else:
-#             desc_dict = eval(vm_description_str)
-#             print(type(desc_dict), desc_dict)
-#             vm_details["ip"] = desc_dict["ip"]
-#             vm_details["pass"] = desc_dict["root_pwd"]
-#             print("ip:", desc_dict["ip"])
-#             print("pass:", desc_dict["root_pwd"])
-#
-#     except Exception as er:
-#         err = str(er)
-#
-#     print(vm_details)
-#
-#     return vm_details
-
-
 def update_description(data2, data3):
     vm = data2
     vm_ip = data3.get('ip')
@@ -235,7 +229,7 @@ def update_description(data2, data3):
     # out = ''
     # err = ''
     try:
-        p = subprocess.Popen(f'echo "gugugu" | sudo -S virsh desc {vm} --new-desc ' +
+        p = subprocess.Popen(f'{PREFIX} desc {vm} --new-desc ' +
                              "'{" + f'"ip": "{vm_ip}", "root_pwd": "{vm_pass}"'+"}'", stdout=PIPE, stderr=PIPE, stdin=PIPE,
                              shell=True)
         stdout, stderr = p.communicate()
@@ -250,4 +244,5 @@ def update_description(data2, data3):
         print(er)
 
     return None
+
 

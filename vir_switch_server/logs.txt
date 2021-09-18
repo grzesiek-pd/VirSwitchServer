@@ -1,1 +1,27 @@
-30-03-2021/10:35:59 clear logs by user: x
+17-09-2021/13:52:05 clear logs by user: x
+17-09-2021/13:52:23 user:x start centos8
+17-09-2021/13:53:00 user:x set max memory centos8: 4096 MB
+17-09-2021/13:53:06 user:x set memory centos8: 2048 MB
+17-09-2021/13:53:15 user:x reboot centos8
+17-09-2021/14:18:24 user:x login to server
+17-09-2021/14:28:37 user:x login to server
+17-09-2021/14:30:53 user:x login to server
+17-09-2021/14:34:04 user:x login to server
+17-09-2021/14:41:33 user:x login to server
+17-09-2021/14:43:20 user:x login to server
+17-09-2021/14:45:14 user:x login to server
+18-09-2021/07:30:08 user:x login to server
+18-09-2021/07:30:25 user:x set max cpus centos8: 2
+18-09-2021/07:30:42 user:x set cpus centos8: 2
+18-09-2021/07:32:02 user:x set cpus centos8_2: 2
+18-09-2021/07:32:09 user:x set max cpus centos8_2: 2
+18-09-2021/07:32:12 user:x set cpus centos8_2: 2
+18-09-2021/08:13:46 user:x login to server
+18-09-2021/08:31:30 user:x login to server
+18-09-2021/08:32:36 user:x start centos8_2
+18-09-2021/08:32:52 user:x set cpus fedoraXfce_1: 2
+18-09-2021/08:32:59 user:x set max cpus fedoraXfce_1: 2
+18-09-2021/08:33:03 user:x set cpus fedoraXfce_1: 2
+18-09-2021/08:33:21 user:x start fedoraXfce_1
+18-09-2021/08:34:10 user:x set memory fedoraXfce_1: 2048 MB
+18-09-2021/08:34:28 user:x stop fedoraXfce_1
