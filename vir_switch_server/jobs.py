@@ -6,7 +6,7 @@ import hashlib
 
 c = sqlite3.connect('users.db')
 cursor = c.cursor()
-PREFIX = 'echo "gugugu" | sudo -S virsh '
+# PREFIX = 'echo "gugugu" | sudo -S virsh '
 
 
 def create_table():
@@ -18,6 +18,7 @@ def create_table():
     admins = cursor.fetchall()
     c.commit()
     if len(admins) == 0:
+        print(f'no admins (creating user:admin/pass:admin - Please create another admin account and remove this!)')
         query2 = f"INSERT INTO users(login, password, admin, vms) VALUES ('admin','{init_pass}', 'yes', 'all');"
         cursor.execute(query2)
         c.commit()
@@ -30,12 +31,14 @@ def add_user(username, user_data):
 
     query = "INSERT INTO users(login, password, admin, vms) VALUES (?, ?, ?, ?);"
     cursor.execute(query, (username, pass_hash, is_admin, vms))
+    print(f'add user: {username}')
     c.commit()
 
 
 def delete_user(username):
     query = f"DELETE FROM users WHERE login ='{username}';"
     cursor.execute(query)
+    print(f'delete user: {username}')
     c.commit()
 
 
@@ -47,16 +50,18 @@ def update_user_vm_list(username, vm, action):
     vm_list = []
     try:
         vm_list = list(vms_tuple)[0].split(",")
-        print(type(vm_list), vm_list)
+        # print(type(vm_list), vm_list)
     except TypeError as err:
         print(err)
     if action == 'remove':
         try:
             vm_list.remove(vm)
+            print(f'remove user: {username} from vm: {vm}')
         except ValueError as err:
             print(err)
     elif action == 'add':
         vm_list.append(vm)
+        print(f'add user: {username} to vm: {vm}')
 
     vms_set = set(vm_list)
     vms = ",".join(vms_set)
@@ -78,6 +83,7 @@ def check_user(username, password):
             vms = check[3]
             msg = ['password_ok', user, 'pass', is_admin, vms]
             add_logs_entry(user, action=f'login to server')
+            print(f'log in user: {user}')
             return msg
         else:
             msg = ['password_wrong']
@@ -91,7 +97,7 @@ def users_list():
     query = f"SELECT login, admin, vms FROM users ORDER BY admin DESC, login ASC ;"
     cursor.execute(query)
     u_list = cursor.fetchall()
-    print("user list: ", type(u_list), u_list)
+    # print("user list: ", type(u_list), u_list)
     c.commit()
     return u_list
 
@@ -99,6 +105,7 @@ def users_list():
 def read_logs_file():
     f = open('logs.txt', 'r', encoding='utf-8')
     logs = f.readlines()
+    print(f'read logs')
     f.close()
     return logs
 
@@ -116,6 +123,7 @@ def reset_logs(user):
     now = datetime.now()
     dt_string = now.strftime("%d-%m-%Y/%H:%M:%S")
     f.write(f'{dt_string} clear logs by user: {user}\n')
+    print(f'reset logs by: {user}')
     f.close()
 
 
@@ -155,7 +163,7 @@ def make_vm_list(cmd):
 
     for vm in v_list_info:
         try:
-            p = subprocess.Popen(f'{PREFIX} dominfo {vm} | grep "\(State\|memory\|CPU\)"', stdout=PIPE, stderr=PIPE, stdin=PIPE, shell=True)
+            p = subprocess.Popen(f'virsh dominfo {vm} | grep "\(State\|memory\|CPU\)"', stdout=PIPE, stderr=PIPE, stdin=PIPE, shell=True)
             stdout, stderr = p.communicate()
 
             out = stdout.decode('utf-8')
@@ -175,25 +183,7 @@ def make_vm_list(cmd):
         info.append(memory)
 
         try:
-            p = subprocess.Popen(f'{PREFIX} domifaddr {vm}', stdout=PIPE, stderr=PIPE, stdin=PIPE, shell=True)
-            stdout, stderr = p.communicate()
-
-            out_ip = stdout.decode('utf-8')
-            err_ip = stderr.decode('utf-8')
-
-        except Exception as er:
-            err_ip = str(err_ip)
-
-        out_raw = out_ip.split('\n')
-        print(out_raw)
-        print(err_ip)
-        # vm_ip_line = out_raw[2].split(' ')
-        # print(vm_ip_line)
-        # vm_ip = vm_ip_line[4]
-        # info.append(vm_ip)
-
-        try:
-            p = subprocess.Popen(f'{PREFIX} desc {vm}', stdout=PIPE, stderr=PIPE, stdin=PIPE, shell=True)
+            p = subprocess.Popen(f'virsh desc {vm}', stdout=PIPE, stderr=PIPE, stdin=PIPE, shell=True)
             stdout, stderr = p.communicate()
 
             vm_description_str = stdout.decode('utf-8')
@@ -229,10 +219,11 @@ def update_description(data2, data3):
     # out = ''
     # err = ''
     try:
-        p = subprocess.Popen(f'{PREFIX} desc {vm} --new-desc ' +
+        p = subprocess.Popen(f'virsh desc {vm} --new-desc ' +
                              "'{" + f'"ip": "{vm_ip}", "root_pwd": "{vm_pass}"'+"}'", stdout=PIPE, stderr=PIPE, stdin=PIPE,
                              shell=True)
         stdout, stderr = p.communicate()
+        print(f'update description for vm: {data2} ({data3})')
 
         vm_description_str = stdout.decode('utf-8')
         err = stderr.decode('utf-8')

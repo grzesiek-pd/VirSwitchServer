@@ -1,16 +1,38 @@
 import socket as sock
-import jobs
-from vir_switch_server.encrypt import Crypt
+import os
+import sys
 
-HOST = '192.168.0.77'
-# HOST = '192.168.81.131'
-PORT = 3333
-PREFIX = 'echo "gugugu" | sudo -S virsh'
+import jobs
+from encrypt import Crypt
+
+euid = os.geteuid()
+if euid != 0:
+    print("Application not started as root. Running sudo..")
+    args = ['sudo', sys.executable] + sys.argv + [os.environ]
+    os.execlpe('sudo', *args)
+
+# start db with admin/admin
 jobs.create_table()
 
+
+def get_ip():
+    s = sock.socket(sock.AF_INET, sock.SOCK_DGRAM)
+    try:
+        s.connect(('10.255.255.255', 1))
+        IP = s.getsockname()[0]
+    except Exception:
+        IP = '127.0.0.1'
+    finally:
+        s.close()
+    return IP
+
+
+HOST = get_ip()
+HOSTNAME = sock.gethostname()
+PORT = 3333
+
 if __name__ == '__main__':
-    # pobrać pass dla root
-    print(f'\033[92m start server at {HOST} / {PORT} (Ctrl-C to stop application)')
+    print(f'\033[92m start server({HOSTNAME}) at {HOST} / {PORT} (Ctrl-C to stop application)')
 
 server_socket = sock.socket(sock.AF_INET, sock.SOCK_STREAM)
 server_socket.bind((HOST, PORT))
@@ -18,7 +40,7 @@ server_socket.listen(10)
 
 
 def vm_list():
-    vm_list = jobs.make_vm_list(f'{PREFIX} list --all ')
+    vm_list = jobs.make_vm_list(f'virsh list --all ')
     return vm_list
 
 
@@ -29,9 +51,10 @@ while True:
     if data_from:
         try:
             data_pack = Crypt.decrypt(data_from)
-            print(f'-------------------')
-            print(f'otrzymana paczka -> {type(data_from)}--{data_from}')
-            print(f'rozkodowana paczka -> {type(data_pack)}--{data_pack}')
+            # received pack view
+            # print(f'-------------------')
+            # print(f'otrzymana paczka -> {type(data_from)}--{data_from}')
+            # print(f'rozkodowana paczka -> {type(data_pack)}--{data_pack}')
 
             if len(data_pack) == 4:
                 msg_id = data_pack[0]
@@ -47,11 +70,10 @@ while True:
             print(f'\033[91m z adresu: {address}')
             print("otrzymany pakiet binarny: ", data_from)
 
+        # comm check
         # print(f"Uzyskano połączenie od hosta {address[0]} na porcie: {address[1]} wiadomość: {data_pack}")
 
         if msg_id == "user_check":
-            # print(jobs.check_user(a_user, data3))
-            # print(data3)
             msg_to_send = jobs.check_user(a_user, data3)
 
         elif msg_id == "get_user_list":
@@ -74,11 +96,10 @@ while True:
 
         elif msg_id == "host_memory":
             host = jobs.control_vm(f'free -m| grep Pam')
-            # print(host)
             msg_to_send = host
 
         elif msg_id == "v_list":
-            v_list = jobs.make_vm_list(f'{PREFIX} list --all ')
+            v_list = jobs.make_vm_list(f'virsh list --all ')
             msg_to_send = v_list
 
         elif msg_id == "get_logs":
@@ -95,69 +116,50 @@ while True:
 
         elif msg_id == "update_description":
             vm_details = jobs.update_description(data2, data3)
-            v_list = jobs.make_vm_list('echo "gugugu" | sudo -S virsh list --all ')
-            msg_to_send = v_list
+            msg_to_send = vm_list()
 # memory
         elif msg_id == "new_memory":
-            # print(data2, data3)
-            jobs.control_vm(f'{PREFIX} setmem {data2} {data3}M')
+            jobs.control_vm(f'virsh setmem {data2} {data3}M')
             jobs.add_logs_entry(a_user, action=f'set memory {data2}: {data3} MB')
-            v_list = jobs.make_vm_list(f'{PREFIX} list --all ')
-            msg_to_send = v_list
+            print(f'user: {a_user} set memory {data2}: {data3} MB')
+            msg_to_send = vm_list()
 
         elif msg_id == "new_max_memory":
-            # print(data2, data3)
-            jobs.control_vm(f'{PREFIX} setmaxmem {data2} {data3}M')
+            jobs.control_vm(f'virsh setmaxmem {data2} {data3}M')
             jobs.add_logs_entry(a_user, action=f'set max memory {data2}: {data3} MB')
-            v_list = jobs.make_vm_list(f'{PREFIX} list --all ')
-            msg_to_send = v_list
-# cpu
-        elif msg_id == "new_cpus":
-            # print(data2, data3)
-            jobs.control_vm(f'{PREFIX} setvcpus {data2} {data3} --config')
-            jobs.add_logs_entry(a_user, action=f'set cpus {data2}: {data3}')
-            v_list = jobs.make_vm_list(f'{PREFIX} list --all ')
-            msg_to_send = v_list
+            print(f'user: {a_user} set max memory {data2}: {data3} MB')
+            msg_to_send = vm_list()
 
-        elif msg_id == "new_max_cpus":
-            # print(data2, data3)
-            jobs.control_vm(f'{PREFIX} setvcpus {data2} {data3} --config --maximum')
-            jobs.add_logs_entry(a_user, action=f'set max cpus {data2}: {data3}')
-            v_list = jobs.make_vm_list(f'{PREFIX} list --all ')
-            msg_to_send = v_list
+        elif msg_id == "new_cpus":
+            jobs.control_vm(f'virsh setvcpus {data2} {data3} --config --maximum')
+            jobs.control_vm(f'virsh setvcpus {data2} {data3} --config')
+            jobs.add_logs_entry(a_user, action=f'set cpus {data2}: {data3}')
+            print(f'user: {a_user} set cpus {data2}: {data3}')
+            msg_to_send = vm_list()
 
         elif msg_id == "start":
-            jobs.control_vm(f'{PREFIX} start {data2} ')
+            jobs.control_vm(f'virsh start {data2} ')
             jobs.add_logs_entry(a_user, action=f'start {data2}')
-            s = '--- komenda start dla '
-            print(msg_id, data2, s, data2)
-            v_list = jobs.make_vm_list(f'{PREFIX} list --all ')
-            msg_to_send = v_list
+            print(f'user: {a_user} start {data2}')
+            msg_to_send = vm_list()
 
         elif msg_id == "stop":
-            jobs.control_vm(f'{PREFIX} shutdown {data2} ')
+            jobs.control_vm(f'virsh shutdown {data2} ')
             jobs.add_logs_entry(a_user, action=f'stop {data2}')
-            s = '--- komenda shutdown dla '
-            print(msg_id, data2, s, data2)
-            v_list = jobs.make_vm_list(f'{PREFIX} list --all ')
-            msg_to_send = v_list
+            print(f'user: {a_user} stop {data2}')
+            msg_to_send = vm_list()
 
         elif msg_id == "restart":
-            jobs.control_vm(f'{PREFIX} reboot {data2} ')
+            jobs.control_vm(f'virsh reboot {data2} ')
             jobs.add_logs_entry(a_user, action=f'reboot {data2}')
-            s = '--- komenda reboot dla'
-            # print(msg_id, data2, s, data2)
-            v_list = jobs.make_vm_list(f'{PREFIX} list --all ')
-            msg_to_send = v_list
+            print(f'user: {a_user} reboot {data2}')
+            msg_to_send = vm_list()
 
         elif msg_id == "kill":
-            jobs.control_vm(f'{PREFIX} destroy {data2} ')
+            jobs.control_vm(f'virsh destroy {data2} ')
             jobs.add_logs_entry(a_user, action=f'force stop {data2}')
-            s = '--- komenda destroy dla'
-            # print(msg_id, data2, s, data2)
-
-            v_list = jobs.make_vm_list(f'{PREFIX} list --all ')
-            msg_to_send = v_list
+            print(f'user: {a_user} force stop {data2}')
+            msg_to_send = vm_list()
 
         else:
             msg_to_send = ['password_wrong']
@@ -168,9 +170,10 @@ while True:
         except ConnectionError as err:
             print(err)
 
-        print(f'-------------------')
-        print(f'przygotowana paczka -> {type(msg_to_send)}--{msg_to_send}')
-        print(f'zakodowana paczka -> {type(pack_to_send)}--{pack_to_send}')
+        # send pack view
+        # print(f'-------------------')
+        # print(f'przygotowana paczka -> {type(msg_to_send)}--{msg_to_send}')
+        # print(f'zakodowana paczka -> {type(pack_to_send)}--{pack_to_send}')
 
     else:
         print("<<< otrzymano pusty pakiet >>>")
