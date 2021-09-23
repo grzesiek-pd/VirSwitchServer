@@ -102,9 +102,43 @@ def users_list():
     return u_list
 
 
-def read_logs_file():
+def read_logs(page):
     f = open('logs.txt', 'r', encoding='utf-8')
-    logs = f.readlines()
+    all_logs = f.readlines()
+    lines = len(all_logs)
+    if lines < 25:
+        logs = {
+            'prev': -1,
+            'next': -1,
+            'current': 1,
+            'log_pack': all_logs
+        }
+    else:
+        if page == 1:
+            max = page * 25
+            logs = {
+                'prev': -1,
+                'next': page + 1,
+                'current': page,
+                'log_pack': all_logs[0:max]
+            }
+        elif 1 < page <= lines/25:
+            min = (page-1) * 25
+            max = page * 25
+            logs = {
+                'prev': page - 1,
+                'next': page + 1,
+                'current': page,
+                'log_pack': all_logs[min:max]
+            }
+        else:
+            min = (page - 1) * 25
+            logs = {
+                'prev': page - 1,
+                'next': -1,
+                'current': page,
+                'log_pack': all_logs[min:]
+            }
     print(f'read logs')
     f.close()
     return logs
