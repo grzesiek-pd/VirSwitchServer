@@ -103,7 +103,7 @@ while True:
             msg_to_send = v_list
 
         elif msg_id == "get_logs":
-            logs = jobs.read_logs_file()
+            logs = jobs.read_logs(data2)
             msg_to_send = logs
 
         elif msg_id == "reset_logs":
