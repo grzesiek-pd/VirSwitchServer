@@ -6,7 +6,6 @@ import hashlib
 
 c = sqlite3.connect('users.db')
 cursor = c.cursor()
-# PREFIX = 'echo "gugugu" | sudo -S virsh '
 
 
 def create_table():
