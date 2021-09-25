@@ -18,7 +18,9 @@ def create_table():
     admins = cursor.fetchall()
     c.commit()
     if len(admins) == 0:
+        print('-------------------------------------------')
         print(f'no admins (creating user:admin/pass:admin - Please create another admin account and remove this!)')
+        print('-------------------------------------------')
         query2 = f"INSERT INTO users(login, password, admin, vms) VALUES ('admin','{init_pass}', 'yes', 'all');"
         cursor.execute(query2)
         c.commit()
