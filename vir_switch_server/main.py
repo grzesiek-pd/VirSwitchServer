@@ -1,12 +1,10 @@
+from encrypt import Crypt
 import socket as sock
 import os
 import sys
-
-import jobs
 import jobs_users
 import jobs_vm
 import jobs_logs
-from encrypt import Crypt
 
 euid = os.geteuid()
 if euid != 0:
@@ -15,7 +13,7 @@ if euid != 0:
     os.execlpe('sudo', *args)
 
 # start db with admin/admin
-jobs.create_table()
+jobs_users.create_table()
 
 
 def get_ip():
@@ -123,18 +121,16 @@ while True:
             msg_to_send = vm_list()
 
         elif msg_id == "host_memory":
-            jobs_vm = jobs_vm.control_vm(f'free -m| grep Pam')
-            msg_to_send = jobs_vm.host
+            host_data = jobs_vm.control_vm(f'free -m| grep Pam')
+            msg_to_send = host_data
 
         elif msg_id == "v_list":
             msg_to_send = vm_list()
 
-        elif msg_id == "get_vm_details":
-            vm_details = jobs_vm.make_vm_details(data2)
-            msg_to_send = vm_details
-
         elif msg_id == "update_description":
             jobs_vm.update_description(data2, data3)
+            jobs_logs.add_logs_entry(a_user, action=f'set description for {data2}: {data3}')
+            print(f'user: {a_user} set description for {data2}: {data3}')
             msg_to_send = vm_list()
 
         elif msg_id == "new_memory":
@@ -168,7 +164,7 @@ while True:
         except ConnectionError as err:
             print(err)
     else:
-        print("<<< otrzymano pusty pakiet >>>")
+        print("<->")
 
 
 

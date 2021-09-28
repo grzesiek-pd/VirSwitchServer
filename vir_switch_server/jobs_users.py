@@ -90,9 +90,8 @@ def check_user(username, password):
 
 
 def users_list():
-    query = f"SELECT login, admin, vms FROM users ORDER BY admin DESC, login ASC ;"
+    query = f"SELECT login, admin, vms FROM users ORDER BY admin DESC, login;"
     cursor.execute(query)
     u_list = cursor.fetchall()
     c.commit()
     return u_list
-

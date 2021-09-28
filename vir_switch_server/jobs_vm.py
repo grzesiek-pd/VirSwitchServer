@@ -1,6 +1,7 @@
 import subprocess
 from subprocess import PIPE
 
+
 def control_vm(cmd):
     try:
         p = subprocess.Popen(cmd, stdout=PIPE, stderr=PIPE, stdin=PIPE, shell=True)
