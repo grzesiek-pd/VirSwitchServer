@@ -51,10 +51,6 @@ while True:
     if data_from:
         try:
             data_pack = Crypt.decrypt(data_from)
-            # received pack view
-            # print(f'-------------------')
-            # print(f'otrzymana paczka -> {type(data_from)}--{data_from}')
-            # print(f'rozkodowana paczka -> {type(data_pack)}--{data_pack}')
 
             if len(data_pack) == 4:
                 msg_id = data_pack[0]
@@ -69,9 +65,6 @@ while True:
             print(err)
             print(f'\033[91m z adresu: {address}')
             print("otrzymany pakiet binarny: ", data_from)
-
-        # comm check
-        # print(f"Uzyskano połączenie od hosta {address[0]} na porcie: {address[1]} wiadomość: {data_pack}")
 
         if msg_id == "user_check":
             msg_to_send = jobs.check_user(a_user, data3)
@@ -169,12 +162,6 @@ while True:
             client_socket.send(pack_to_send)
         except ConnectionError as err:
             print(err)
-
-        # send pack view
-        # print(f'-------------------')
-        # print(f'przygotowana paczka -> {type(msg_to_send)}--{msg_to_send}')
-        # print(f'zakodowana paczka -> {type(pack_to_send)}--{pack_to_send}')
-
     else:
         print("<<< otrzymano pusty pakiet >>>")
 

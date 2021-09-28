@@ -6,7 +6,6 @@ import hashlib
 
 c = sqlite3.connect('users.db')
 cursor = c.cursor()
-# PREFIX = 'echo "gugugu" | sudo -S virsh '
 
 
 def create_table():
@@ -50,7 +49,6 @@ def update_user_vm_list(username, vm, action):
     vm_list = []
     try:
         vm_list = list(vms_tuple)[0].split(",")
-        # print(type(vm_list), vm_list)
     except TypeError as err:
         print(err)
     if action == 'remove':
@@ -97,9 +95,25 @@ def users_list():
     query = f"SELECT login, admin, vms FROM users ORDER BY admin DESC, login ASC ;"
     cursor.execute(query)
     u_list = cursor.fetchall()
-    # print("user list: ", type(u_list), u_list)
     c.commit()
     return u_list
+
+
+def add_logs_entry(user, action):
+    f = open('logs.txt', 'a+', encoding='utf-8')
+    now = datetime.now()
+    dt_string = now.strftime("%d-%m-%Y/%H:%M:%S")
+    f.write(f'{dt_string} user:{user} {action}\n')
+    f.close()
+
+
+def reset_logs(user):
+    f = open('logs.txt', 'w', encoding='utf-8')
+    now = datetime.now()
+    dt_string = now.strftime("%d-%m-%Y/%H:%M:%S")
+    f.write(f'{dt_string} clear logs by user: {user}\n')
+    print(f'reset logs by: {user}')
+    f.close()
 
 
 def read_logs(page):
@@ -144,23 +158,6 @@ def read_logs(page):
     return logs
 
 
-def add_logs_entry(user, action):
-    f = open('logs.txt', 'a+', encoding='utf-8')
-    now = datetime.now()
-    dt_string = now.strftime("%d-%m-%Y/%H:%M:%S")
-    f.write(f'{dt_string} user:{user} {action}\n')
-    f.close()
-
-
-def reset_logs(user):
-    f = open('logs.txt', 'w', encoding='utf-8')
-    now = datetime.now()
-    dt_string = now.strftime("%d-%m-%Y/%H:%M:%S")
-    f.write(f'{dt_string} clear logs by user: {user}\n')
-    print(f'reset logs by: {user}')
-    f.close()
-
-
 def control_vm(cmd):
     try:
         p = subprocess.Popen(cmd, stdout=PIPE, stderr=PIPE, stdin=PIPE, shell=True)
@@ -171,9 +168,6 @@ def control_vm(cmd):
         err = str(er)
         print(err)
     out = out_raw.split()
-    # print(out_raw)
-    # print(out)
-
     return out
 
 
@@ -192,7 +186,6 @@ def make_vm_list(cmd):
     out_raw = out.split('\n')
     for line in out_raw[2:-2]:
         li = line.split()
-        # print(li)
         v_list_info.append(li[1])
 
     for vm in v_list_info:
@@ -204,7 +197,9 @@ def make_vm_list(cmd):
             err = stderr.decode('utf-8')
             info = []
         except Exception as er:
-            err = str(er)
+            er = str(err)
+            print(er)
+
         out_raw = out[0:-2].split('\n')
         info.append(vm)
         state = out_raw[0].split()[-1]
@@ -228,21 +223,13 @@ def make_vm_list(cmd):
                 description_pwd = "No description!"
             else:
                 desc_dict = eval(vm_description_str)
-                # print(type(desc_dict), desc_dict)
                 description_ip = desc_dict["ip"]
                 description_pwd = desc_dict["root_pwd"]
-                # print("ip:", desc_dict["ip"])
-                # print("pass:", desc_dict["root_pwd"])
-
-            # info = []
         except Exception as er:
             err2 = str(er)
-
-        # print("ok->", description_ip, description_pwd)
         info.append(description_ip)
         info.append(description_pwd)
         v_list.append(info)
-
     return v_list
 
 
@@ -250,8 +237,6 @@ def update_description(data2, data3):
     vm = data2
     vm_ip = data3.get('ip')
     vm_pass = data3.get('pass')
-    # out = ''
-    # err = ''
     try:
         p = subprocess.Popen(f'virsh desc {vm} --new-desc ' +
                              "'{" + f'"ip": "{vm_ip}", "root_pwd": "{vm_pass}"'+"}'", stdout=PIPE, stderr=PIPE, stdin=PIPE,
@@ -267,7 +252,6 @@ def update_description(data2, data3):
         print(vm_description_str)
         print(err)
         print(er)
-
     return None
 
 
