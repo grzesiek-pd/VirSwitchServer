@@ -3,6 +3,9 @@ import os
 import sys
 
 import jobs
+import jobs_users
+import jobs_vm
+import jobs_logs
 from encrypt import Crypt
 
 euid = os.geteuid()
@@ -40,8 +43,11 @@ server_socket.listen(10)
 
 
 def vm_list():
-    vm_list = jobs.make_vm_list(f'virsh list --all ')
-    return vm_list
+    return jobs_vm.make_vm_list(f'virsh list --all ')
+
+
+def user_list():
+    return jobs_users.users_list()
 
 
 while True:
@@ -66,93 +72,92 @@ while True:
             print(f'\033[91m z adresu: {address}')
             print("otrzymany pakiet binarny: ", data_from)
 
+    # user
         if msg_id == "user_check":
-            msg_to_send = jobs.check_user(a_user, data3)
+            msg_to_send = jobs_users.check_user(a_user, data3)
 
         elif msg_id == "get_user_list":
-            msg_to_send = jobs.users_list()
-
-        elif msg_id == "error":
-            msg_to_send = "error"
+            msg_to_send = user_list()
 
         elif msg_id == "add_user":
-            jobs.add_user(a_user, data2)
-            msg_to_send = jobs.users_list()
+            jobs_users.add_user(a_user, data2)
+            msg_to_send = user_list()
 
         elif msg_id == "update_user_vm_list":
-            jobs.update_user_vm_list(a_user, data2, data3)
-            msg_to_send = jobs.users_list()
+            jobs_users.update_user_vm_list(a_user, data2, data3)
+            msg_to_send = user_list()
 
         elif msg_id == "delete_user":
-            jobs.delete_user(a_user)
-            msg_to_send = jobs.users_list()
+            jobs_users.delete_user(a_user)
+            msg_to_send = user_list()
 
-        elif msg_id == "host_memory":
-            host = jobs.control_vm(f'free -m| grep Pam')
-            msg_to_send = host
-
-        elif msg_id == "v_list":
-            v_list = jobs.make_vm_list(f'virsh list --all ')
-            msg_to_send = v_list
-
+    # logs
         elif msg_id == "get_logs":
-            logs = jobs.read_logs(data2)
-            msg_to_send = logs
+            msg_to_send = jobs_logs.read_logs(data2)
 
         elif msg_id == "reset_logs":
-            logs = jobs.reset_logs(a_user)
-            msg_to_send = logs
-
-        elif msg_id == "get_vm_details":
-            vm_details = jobs.make_vm_details(data2)
-            msg_to_send = vm_details
-
-        elif msg_id == "update_description":
-            vm_details = jobs.update_description(data2, data3)
-            msg_to_send = vm_list()
-# memory
-        elif msg_id == "new_memory":
-            jobs.control_vm(f'virsh setmem {data2} {data3}M')
-            jobs.add_logs_entry(a_user, action=f'set memory {data2}: {data3} MB')
-            print(f'user: {a_user} set memory {data2}: {data3} MB')
-            msg_to_send = vm_list()
-
-        elif msg_id == "new_max_memory":
-            jobs.control_vm(f'virsh setmaxmem {data2} {data3}M')
-            jobs.add_logs_entry(a_user, action=f'set max memory {data2}: {data3} MB')
-            print(f'user: {a_user} set max memory {data2}: {data3} MB')
-            msg_to_send = vm_list()
-
-        elif msg_id == "new_cpus":
-            jobs.control_vm(f'virsh setvcpus {data2} {data3} --config --maximum')
-            jobs.control_vm(f'virsh setvcpus {data2} {data3} --config')
-            jobs.add_logs_entry(a_user, action=f'set cpus {data2}: {data3}')
-            print(f'user: {a_user} set cpus {data2}: {data3}')
-            msg_to_send = vm_list()
-
+            msg_to_send = jobs_logs.reset_logs(a_user)
+    # vm
         elif msg_id == "start":
-            jobs.control_vm(f'virsh start {data2} ')
-            jobs.add_logs_entry(a_user, action=f'start {data2}')
+            jobs_vm.control_vm(f'virsh start {data2} ')
+            jobs_logs.add_logs_entry(a_user, action=f'start {data2}')
             print(f'user: {a_user} start {data2}')
             msg_to_send = vm_list()
 
         elif msg_id == "stop":
-            jobs.control_vm(f'virsh shutdown {data2} ')
-            jobs.add_logs_entry(a_user, action=f'stop {data2}')
+            jobs_vm.control_vm(f'virsh shutdown {data2} ')
+            jobs_logs.add_logs_entry(a_user, action=f'stop {data2}')
             print(f'user: {a_user} stop {data2}')
             msg_to_send = vm_list()
 
         elif msg_id == "restart":
-            jobs.control_vm(f'virsh reboot {data2} ')
-            jobs.add_logs_entry(a_user, action=f'reboot {data2}')
+            jobs_vm.control_vm(f'virsh reboot {data2} ')
+            jobs_logs.add_logs_entry(a_user, action=f'reboot {data2}')
             print(f'user: {a_user} reboot {data2}')
             msg_to_send = vm_list()
 
         elif msg_id == "kill":
-            jobs.control_vm(f'virsh destroy {data2} ')
-            jobs.add_logs_entry(a_user, action=f'force stop {data2}')
+            jobs_vm.control_vm(f'virsh destroy {data2} ')
+            jobs_logs.add_logs_entry(a_user, action=f'force stop {data2}')
             print(f'user: {a_user} force stop {data2}')
             msg_to_send = vm_list()
+
+        elif msg_id == "host_memory":
+            jobs_vm = jobs_vm.control_vm(f'free -m| grep Pam')
+            msg_to_send = jobs_vm.host
+
+        elif msg_id == "v_list":
+            msg_to_send = vm_list()
+
+        elif msg_id == "get_vm_details":
+            vm_details = jobs_vm.make_vm_details(data2)
+            msg_to_send = vm_details
+
+        elif msg_id == "update_description":
+            jobs_vm.update_description(data2, data3)
+            msg_to_send = vm_list()
+
+        elif msg_id == "new_memory":
+            jobs_vm.control_vm(f'virsh setmem {data2} {data3}M')
+            jobs_logs.add_logs_entry(a_user, action=f'set memory {data2}: {data3} MB')
+            print(f'user: {a_user} set memory {data2}: {data3} MB')
+            msg_to_send = vm_list()
+
+        elif msg_id == "new_max_memory":
+            jobs_vm.control_vm(f'virsh setmaxmem {data2} {data3}M')
+            jobs_logs.add_logs_entry(a_user, action=f'set max memory {data2}: {data3} MB')
+            print(f'user: {a_user} set max memory {data2}: {data3} MB')
+            msg_to_send = vm_list()
+
+        elif msg_id == "new_cpus":
+            jobs_vm.control_vm(f'virsh setvcpus {data2} {data3} --config --maximum')
+            jobs_vm.control_vm(f'virsh setvcpus {data2} {data3} --config')
+            jobs_logs.add_logs_entry(a_user, action=f'set cpus {data2}: {data3}')
+            print(f'user: {a_user} set cpus {data2}: {data3}')
+            msg_to_send = vm_list()
+
+        elif msg_id == "error":
+            msg_to_send = "error"
 
         else:
             msg_to_send = ['password_wrong']
